@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+.Header {
+  display: flex;
+  justify-content: space-between;
+
+  /* width: 300px; */
+  padding: 20px;
+  border-radius: 8px 8px 0 0;
+
+  font-weight: bold;
+  color: #9f73ab;
+  background-color: #3f3b6c;
+}
+
+.Header-left {
+  color: #fff;
+}
+
+.Header-right {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Header-right span {
+  display: block;
+}

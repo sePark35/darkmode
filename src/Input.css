@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+
+.Input {
+  display: flex;
+  align-items: center;
+
+  padding: 10px;
+  border-radius: 0 0 8px 8px;
+
+  background-color: #3f3b6c;
+}
+
+.Input input {
+  width: 70%;
+  height: 40px;
+
+  outline: none;
+  border: none;
+  border-radius: 8px 0 0 8px;
+}
+
+.Input button {
+  width: 30%;
+  height: 40px;
+
+  border: none;
+  border-radius: 0 8px 8px 0;
+
+  font-weight: bold;
+  font-size: 13px;
+  color: #fff;
+  background-color: #9f73ab;
+}

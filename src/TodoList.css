@@ -1,0 +1,9 @@
+* {
+  box-sizing: border-box;
+}
+
+.TodoList {
+  min-height: 300px;
+
+  background-color: #624f82;
+}
