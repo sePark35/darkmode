@@ -6,6 +6,7 @@ import Input from "./Input";
 
 function App() {
   const [list, setList] = useState([]);
+  const [state, setState] = useState("");
 
   const onAdd = (data, id) => {
     const copyArr = [...list];
@@ -21,8 +22,8 @@ function App() {
 
   return (
     <div className="App">
-      <Header></Header>
-      <TodoList list={list} />
+      <Header setState={setState}></Header>
+      <TodoList list={list} state={state} />
       <Input onAdd={onAdd} />
     </div>
   );

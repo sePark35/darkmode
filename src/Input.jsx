@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Input.css";
+
 const Input = ({ onAdd }) => {
   const [content, setContent] = useState({
     data: "",
@@ -12,7 +13,6 @@ const Input = ({ onAdd }) => {
       id: new Date().getTime(),
     });
   };
-  console.log(content);
   const handleSubmit = () => {
     onAdd(content.data, content.id);
     setContent({ data: "", id: "" });

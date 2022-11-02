@@ -3,18 +3,20 @@ import { useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import React from "react";
 
-function TodoListItem({ data, checked, setChecked }) {
+function TodoListItem({ data, id, setChecked, handleNewList }) {
   const [fontColor, setFontColor] = useState(false);
 
-  const handleClickChange = () => {
+  const handleClickChange = (e) => {
     setFontColor(!fontColor);
-    setChecked(!checked);
+    setChecked((pre) => (pre === "Active" ? "Completed" : "Active"));
+    handleNewList(e.target.name);
   };
 
   return (
     <div className="TodoListItem">
       <div className="todo-checkbox">
         <input
+          name={id}
           id="checkbox"
           type="checkbox"
           onChange={handleClickChange}

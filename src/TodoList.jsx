@@ -2,23 +2,37 @@ import { useEffect, useState } from "react";
 import "./TodoList.css";
 import TodoListItem from "./TodoListItem";
 
-function TodoList({ list }) {
-  const [checked, setChecked] = useState(false);
+function TodoList({ list, state }) {
+  const [checked, setChecked] = useState("Active");
+  const [newList, setNewList] = useState(list);
+  // const newList = () => {
+  //   if (state === "All") {
+  //     return list;
+  //   } else if (state === "Completed") {
+  //     return list.filter((ele) => {});
+  //   }
+  // };
 
-  // useEffect(() => {
-  //   fetch("data/todolist.json")
-  //     .then((res) => res.json())
-  //     .then((data) => setData(data));
-  // });
+  const handleNewList = (num) => {
+    if (checked === "Completed") {
+      let a = list.filter((el) => el.id === Number(num));
+      return setNewList(a);
+    } else if (checked === "Active") {
+      let a = list.filter((el) => !el.id === Number(num));
+      return setNewList(a);
+    }
+  };
 
+  console.log(newList);
   return (
     <div className="TodoList">
-      {list.map((el, index) => (
+      {newList.map((el, index) => (
         <TodoListItem
           key={index}
           {...el}
           setChecked={setChecked}
           checked={checked}
+          handleNewList={handleNewList}
         />
       ))}
     </div>
