@@ -20,11 +20,47 @@ function App() {
       .then((data) => setList(data));
   }, []);
 
+  const handleListData = (e) => {
+    const copyArr = [...list];
+    e.target.checked
+      ? (copyArr[Number(e.target.name) - 1] = {
+          ...copyArr[Number(e.target.name) - 1],
+          action: "Completed",
+        })
+      : (copyArr[Number(e.target.name) - 1] = {
+          ...copyArr[Number(e.target.name) - 1],
+          action: "Active",
+        });
+    setList(copyArr);
+  };
+
+  const handleListDelete = (e) => {
+    const copyArr = [...list];
+    copyArr.splice(
+      copyArr.indexOf(copyArr.filter((el) => el.id === Number(e.target.id))[0]),
+      1
+    );
+
+    setList(copyArr);
+  };
+
   return (
     <div className="App">
       <Header setState={setState}></Header>
-      <TodoList list={list} state={state} />
-      <Input onAdd={onAdd} />
+      <TodoList
+        list={
+          state === "Completed"
+            ? list.filter((el) => el.action === "Completed")
+            : state === "Active"
+            ? list.filter((el) => el.action === "Active")
+            : list
+        }
+        state={state}
+        handleListData={handleListData}
+        handleListDelete={handleListDelete}
+        setList={setList}
+      />
+      <Input onAdd={onAdd} list={list} />
     </div>
   );
 }

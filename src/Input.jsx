@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Input.css";
 
-const Input = ({ onAdd }) => {
+const Input = ({ onAdd, list }) => {
   const [content, setContent] = useState({
     data: "",
     id: "",
@@ -10,7 +10,7 @@ const Input = ({ onAdd }) => {
   const handleContent = (e) => {
     setContent({
       [e.target.name]: e.target.value,
-      id: new Date().getTime(),
+      id: list.length + 1,
     });
   };
   const handleSubmit = () => {

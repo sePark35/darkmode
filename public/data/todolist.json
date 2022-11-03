@@ -1,7 +1,7 @@
 [
-  { "id": 1, "data": "일어나기" },
-  { "id": 2, "data": "샤워하기" },
-  { "id": 3, "data": "준비하기" },
-  { "id": 4, "data": "밥먹기" },
-  { "id": 5, "data": "과제하기" }
+  { "id": 1, "data": "일어나기", "action": "Active" },
+  { "id": 2, "data": "샤워하기", "action": "Active" },
+  { "id": 3, "data": "준비하기", "action": "Active" },
+  { "id": 4, "data": "밥먹기", "action": "Active" },
+  { "id": 5, "data": "과제하기", "action": "Active" }
 ]

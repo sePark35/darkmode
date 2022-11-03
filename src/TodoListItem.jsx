@@ -3,31 +3,28 @@ import { useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import React from "react";
 
-function TodoListItem({ data, id, setChecked, handleNewList }) {
-  const [fontColor, setFontColor] = useState(false);
-
-  const handleClickChange = (e) => {
-    setFontColor(!fontColor);
-    setChecked((pre) => (pre === "Active" ? "Completed" : "Active"));
-    handleNewList(e.target.name);
-  };
+function TodoListItem({ el, handleListData, handleListDelete }) {
+  const { data, id, action } = el;
 
   return (
     <div className="TodoListItem">
       <div className="todo-checkbox">
         <input
           name={id}
-          id="checkbox"
+          id={`checkbox+${id}`}
           type="checkbox"
-          onChange={handleClickChange}
+          checked={action === "Completed"}
+          onChange={handleListData}
           style={
-            fontColor ? { accentColor: "#790252" } : { accentColor: "#fff" }
+            action === "Completed"
+              ? { accentColor: "#790252" }
+              : { accentColor: "#fff" }
           }
         />
         <label
-          htmlFor="checkbox"
+          htmlFor={`checkbox+${id}`}
           style={
-            fontColor
+            action === "Completed"
               ? { color: "#790252", textDecoration: "line-through" }
               : { color: "#9f73ab" }
           }
@@ -35,8 +32,8 @@ function TodoListItem({ data, id, setChecked, handleNewList }) {
           {data}
         </label>
       </div>
-      <span>
-        <FaTrashAlt />
+      <span id={id} onClick={handleListDelete}>
+        🗑
       </span>
     </div>
   );
