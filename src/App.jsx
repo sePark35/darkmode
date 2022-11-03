@@ -7,6 +7,7 @@ import Input from "./Input";
 function App() {
   const [list, setList] = useState([]);
   const [state, setState] = useState("");
+  const [darkMode, setDarkMode] = useState(false);
 
   const onAdd = (data, id) => {
     const copyArr = [...list];
@@ -44,9 +45,18 @@ function App() {
     setList(copyArr);
   };
 
+  const handleDarkMode = () => {
+    setDarkMode((pre) => !pre);
+    document.body.style.backgroundColor = darkMode ? "#1B2430" : "#fff";
+  };
+
   return (
     <div className="App">
-      <Header setState={setState}></Header>
+      <Header
+        setState={setState}
+        darkMode={darkMode}
+        handleDarkMode={handleDarkMode}
+      ></Header>
       <TodoList
         list={
           state === "Completed"
